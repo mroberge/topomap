@@ -1,0 +1,128 @@
+* {
+  margin: 0px;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0px 0px 0px 2px;
+}
+
+H1 {
+
+}
+
+#map_canvas {
+  margin: 0px;
+  width: 100%;
+  border: 1px solid black;
+  height: 400px
+}
+
+#tools_div {
+  width: 100%;
+  font-size: small;
+  text-align: justify;
+}
+#tools_div span {
+  display: inline-block;
+}
+#tools_div:after {
+  content: '';
+  width: 100%;
+  display: inline-block;
+}
+
+#chart_div {
+  float: left;
+  width: 70%;
+  height: 200px;
+}
+#text_div {
+  float: right;
+  width: 30%;
+  height: 200px
+}
+#bottom-text {
+  float: left;
+  width: 70%;
+}
+.logo {
+  font-family: 'Chango', sans-serif;
+}
+
+#splash {
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(156,156,156);
+}
+#splash div {
+  z-index: 2;
+  margin: 40px;
+  border-radius: 10px 10px 10px 10px;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgb(0, 135, 255);
+  border-color: rgb(50, 50, 50);
+  text-align: center
+}
+#splash div h1 {
+  font-size: 30pt;
+  text-shadow: 2px 2px 10px white;
+  margin-top: 0;
+  margin-bottom: 0
+}
+#splash div p {
+  margin-top: 0;
+  margin-bottom: 10px
+}
+#acknowledgement {
+  width: 450px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  bottom: 0px;
+  font-family: serif;
+  font-size: 10pt;
+  color: rgb(100, 100, 100);
+}
+#instructions {
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(156,156,156);
+}
+#instructions div {
+  z-index: 2;
+  margin: 40px;
+  /*height: 350px;
+   width: 500px;*/
+  border-radius: 10px 10px 10px 10px;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgb(0, 135, 255);
+  border-color: rgb(50, 50, 50);
+  text-align: center;
+}
+
+#instructions div ul {
+  text-align: left
+}
+
+.five {
+  float: left;
+  width: 18%;
+  text-align: center;
+  margin: 2px 2% 2px 0;
+}
+
+.fivelast {
+  float: right;
+  width: 18%;
+  text-align: center;
+  margin: 2px 0 2px 0;
+}
+
