@@ -4,6 +4,7 @@
       //Marty's UI
       function update(element, pasteObject) {
         element.textContent = pasteObject;
+        return element;
       }
 
       function get(id) {
