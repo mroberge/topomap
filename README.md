@@ -5,4 +5,4 @@ Tools for measuring the Earth. [*topoMap*](http://mroberge.github.io/topomap/) i
 
 The purpose of this tool is to allow geomorphology students to measure natural features from around the world. I've used it with students to measure the slope and sinuosity of different streams, to compare the height and width of waterfalls, to measure the width and depth of ocean trenches, and to find and explore exciting places from around the world.
 
-Jasmine tests: [SpecRunner.html](SpecRunner.html)
+Jasmine tests: [SpecRunner.html](http://mroberge.github.io/topomap/SpecRunner.html)
