@@ -30,7 +30,7 @@
           element.style.display = 'none';
         } else {
           element.style.display = 'block';
-        };
+        }
       }
 
       var w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0], width = w.innerWidth || e.clientWidth || g.clientWidth, height = w.innerHeight || e.clientHeight || g.clientHeight;
@@ -103,7 +103,7 @@ travelMode: 'direct'
 // Grand Canyon
 latlngs: [
 [36.012196, -112.100348],
-[36.221866, -112.098975],
+[36.221866, -112.098975]
 ],
 mapType: google.maps.MapTypeId.TERRAIN,
 travelMode: 'direct'
@@ -169,14 +169,14 @@ travelMode: 'direct'
         var path = [];
         for (var i = 0; i < results.length; i++) {
           path.push(elevations[i].location);
-        };
+        }
 
         if (polyline) {
           polyline.setMap(null);
-        };
+        }
         if (polyline2) {
           polyline2.setMap(null);
-        };
+        }
 
         polyline = new google.maps.Polyline({
           path : path,
@@ -221,7 +221,7 @@ travelMode: 'direct'
           //data.addRow(['', elevations[i].elevation]);//original;
           data.addRow([distance, elevations[i].elevation]);
           //for scatterchart
-        };
+        }
 
         document.getElementById('chart_div').style.display = 'block';
         var chartwidth = width * 0.7;
@@ -251,7 +251,7 @@ travelMode: 'direct'
         if (mousemarker != null) {
           mousemarker.setMap(null);
           mousemarker = null;
-        };
+        }
       }
 
       // Geocode an address and add a marker for the result
@@ -272,13 +272,13 @@ travelMode: 'direct'
               map.fitBounds(bounds);
             } else {
               map.fitBounds(results[0].geometry.viewport);
-            };
+            }
           } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
             alert("Address not found");
           } else {
             alert("Address lookup failed");
           }
-          ;
+
         });
       }
 
@@ -301,14 +301,14 @@ travelMode: 'direct'
 
           if (doQuery) {
             updateElevation();
-          };
+          }
 
           if (markers.length == maxLength) {
             document.getElementById('address').disabled = true;
-          };
+          }
         } else {
           alert("No more than " + maxLength + " points can be added");
-        };
+        }
       }
 
       // Trigger the elevation query for point to point
@@ -322,15 +322,15 @@ travelMode: 'direct'
             var latlngs = [];
             for (var i in markers) {
               latlngs.push(markers[i].getPosition());
-            };
+            }
 
             elevationService.getElevationAlongPath({
               path : latlngs,
               samples : SAMPLES
             }, plotElevation);
             //updateText(latlngs);//new plan: call from within plotElevation so that I can use the array of elevations.
-          };
-        };
+          }
+        }
       }
 
       function updateText(path, elevs) {
@@ -376,7 +376,7 @@ travelMode: 'direct'
             location : markers[i].getPosition(),
             stopover : true
           });
-        };
+        }
 
         var request = {
           origin : origin,
@@ -394,7 +394,7 @@ travelMode: 'direct'
           case "walking":
             request.travelMode = google.maps.DirectionsTravelMode.WALKING;
             break;
-        };
+        }
 
         directionsService.route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
@@ -409,7 +409,7 @@ travelMode: 'direct'
           } else {
             alert("Directions request failed");
           }
-          ;
+
         });
       }
 
@@ -424,14 +424,14 @@ travelMode: 'direct'
         } else {
           return true;
         }
-        ;
+
 
         if (keycode == 13) {
           addAddress();
           return false;
         } else {
           return true;
-        };
+        }
       }
 
       function loadExample(n) {
@@ -443,7 +443,7 @@ travelMode: 'direct'
           var latlng = new google.maps.LatLng(examples[n].latlngs[i][0], examples[n].latlngs[i][1]);
           addMarker(latlng, false);
           bounds.extend(latlng);
-        };
+        }
         map.fitBounds(bounds);
         updateElevation();
       }
@@ -452,15 +452,15 @@ travelMode: 'direct'
       function reset() {
         if (polyline) {
           polyline.setMap(null);
-        };
+        }
 
         if (polyline2) {
           polyline2.setMap(null);
-        };
+        }
 
         for (var i in markers) {
           markers[i].setMap(null);
-        };
+        }
 
         markers = [];
 
@@ -468,11 +468,4 @@ travelMode: 'direct'
         document.getElementById('text_div').style.display = 'none';
       }
 
-      function photoToggle() {
-        var showphoto = document.getElementById('photos');
-        if (showphoto.checked) {
-          panoramioLayer.setMap(map);
-        } else {
-          panoramioLayer.setMap(null);
-        };
-      }
+
