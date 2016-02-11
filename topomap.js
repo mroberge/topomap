@@ -341,7 +341,8 @@ travelMode: 'direct'
         var directLength = google.maps.geometry.spherical.computeDistanceBetween(path[0], path[path.length - 1]).toFixed(0);
         var closedLength = +pathLength + +directLength;
         //convert to number
-        var pathArea = google.maps.geometry.spherical.computeArea(path).toFixed(0);
+        var pathAreaMeters = google.maps.geometry.spherical.computeArea(path)/1000000;
+        var pathArea = pathAreaMeters.toFixed(1);
         var startElev = elevs[0].elevation.toFixed(0);
         var endElev = elevs[elevs.length - 1].elevation.toFixed(0);
         var relief = startElev - endElev;
