@@ -337,30 +337,44 @@ travelMode: 'direct'
         var textDiv = document.getElementById('text_div');
         textDiv.style.display = 'block';
 
-        var pathLength = google.maps.geometry.spherical.computeLength(path).toFixed(0);
-        var directLength = google.maps.geometry.spherical.computeDistanceBetween(path[0], path[path.length - 1]).toFixed(0);
+        //console.log(elevs);
+
+        var pathLength = google.maps.geometry.spherical.computeLength(path);
+        var directLength = google.maps.geometry.spherical.computeDistanceBetween(path[0], path[path.length - 1]);
         var closedLength = +pathLength + +directLength;
         //convert to number
         var pathAreaMeters = google.maps.geometry.spherical.computeArea(path)/1000000;
-        var pathArea = pathAreaMeters.toFixed(1);
-        var startElev = elevs[0].elevation.toFixed(0);
-        var endElev = elevs[elevs.length - 1].elevation.toFixed(0);
-        var relief = startElev - endElev;
+        var pathArea = pathAreaMeters;
+        var startElev = elevs[0].elevation;
+        var endElev = elevs[elevs.length - 1].elevation;
+        var minElev = null;
+        var maxElev = null;
+        for (var i = 0, len = elevs.length; i < len; ++i)
+        {
+          var elem = elevs[i].elevation;
+          if (minElev === null || minElev > elem) minElev = elem;
+          if (maxElev === null || maxElev < elem) maxElev = elem;
+        }
+        var relief = maxElev - minElev;
         var pathSlope = relief / pathLength;
         var directSlope = relief / directLength;
         var sinuosity = pathLength / directLength;
-        var longString = //This would be easier with Handlebars or such...
-        "<h3>Path Information</h3><p>" + "<abbr title='the distance along the black line'>Path length</abbr>: " + pathLength + " meters<br>" + "<abbr title='the distance along the dotted orange line'>Direct length</abbr>: " + directLength + " meters<br>" + "<abbr title='the distance along the perimeter of the enclosed area'>Closed path length</abbr>: " + closedLength + " m<br><br>" + "<abbr title='the area inside the black and orange lines.'>Area</abbr>: " + pathArea + " sq. meters<br><br>" + "<abbr title='the height above sea level for the first point'>Start elevation</abbr>: " + startElev + " meters A.M.S.L<br>" + "<abbr title='the height above sea level for the last point'>End elevation</abbr>: " + endElev + " meters A.M.S.L<br>" + "<abbr title='the difference in height between the first point and the last point'>Relief</abbr>: " + relief + " meters<br><br>" + "<abbr title='the difference in height between the first point and the last point, divided by the length of the black line'>Path slope</abbr>: " + pathSlope.toFixed(4) + "<br>" + "<abbr title='the difference in height between the first point and the last point, divided by the length of the dotted orange line'>Direct slope</abbr>: " + directSlope.toFixed(4) + "<br><br>" + "<abbr title='the length of the black line divided by the length of the dotted orange line'>Sinuosity</abbr>: " + sinuosity.toFixed(2) + "</p>";
-        update(get("pathLength"), pathLength);
-        update(get("directLength"), directLength);
-        update(get("closedLength"), closedLength);
-        update(get("pathArea"), pathArea);
-        update(get("startElev"), startElev);
-        update(get("endElev"), endElev);
-        update(get("relief"), relief);
+
+        //var longString = //This would be easier with Handlebars or such...
+        //"<h3>Path Information</h3><p>" + "<abbr title='the distance along the black line'>Path length</abbr>: " + pathLength + " meters<br>" + "<abbr title='the distance along the dotted orange line'>Direct length</abbr>: " + directLength + " meters<br>" + "<abbr title='the distance along the perimeter of the enclosed area'>Closed path length</abbr>: " + closedLength + " m<br><br>" + "<abbr title='the area inside the black and orange lines.'>Area</abbr>: " + pathArea + " sq. meters<br><br>" + "<abbr title='the height above sea level for the first point'>Start elevation</abbr>: " + startElev + " meters A.M.S.L<br>" + "<abbr title='the height above sea level for the last point'>End elevation</abbr>: " + endElev + " meters A.M.S.L<br>" + "<abbr title='the difference in height between the first point and the last point'>Relief</abbr>: " + relief + " meters<br><br>" + "<abbr title='the difference in height between the first point and the last point, divided by the length of the black line'>Path slope</abbr>: " + pathSlope.toFixed(4) + "<br>" + "<abbr title='the difference in height between the first point and the last point, divided by the length of the dotted orange line'>Direct slope</abbr>: " + directSlope.toFixed(4) + "<br><br>" + "<abbr title='the length of the black line divided by the length of the dotted orange line'>Sinuosity</abbr>: " + sinuosity.toFixed(2) + "</p>";
+        update(get("pathLength"), pathLength.toFixed(0));
+        update(get("directLength"), directLength.toFixed(0));
+        update(get("closedLength"), closedLength.toFixed(0));
+        update(get("pathArea"), pathArea.toFixed(0));
+        update(get("startElev"), startElev.toFixed(0));
+        update(get("endElev"), endElev.toFixed(0));
+        update(get("maxElev"), maxElev.toFixed(0));
+        update(get("minElev"), minElev.toFixed(0));
+        update(get("relief"), relief.toFixed(0));
         update(get("pathSlope"), pathSlope.toFixed(4));
         update(get("directSlope"), directSlope.toFixed(4));
         update(get("sinuosity"), sinuosity.toFixed(2));
+
 
         //textDiv.innerHTML = longString;
       }
