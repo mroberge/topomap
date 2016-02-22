@@ -26,10 +26,10 @@ function hide(elname) {
 function toggleshow(elname) {
     console.log("showtoggle: " + elname);
     var element = document.getElementById(elname);
-    if (element.style.display == 'block') {
-        element.style.display = 'none';
-    } else {
+    if (element.style.display == 'none') {
         element.style.display = 'block';
+    } else {
+        element.style.display = 'none';
     }
 }
 
