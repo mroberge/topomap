@@ -7,7 +7,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>topoMap</title>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCxmwq7svGGXSeaXHsxfW27LDaXytc3nBY&sensor=false&libraries=panoramio,geometry"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCxmwq7svGGXSeaXHsxfW27LDaXytc3nBY&libraries=panoramio,geometry"></script>
 
     <script src="topomap.js"></script>
     <link href="topomap.css" rel="stylesheet" type="text/css" media="all">
@@ -89,7 +89,7 @@
     <div id="tools_div">
 
       <span><a href="#" onclick="show('instructions'); return false">Instructions</a></span>
-      <span>
+      <span><label>
         <select name="selectPlace" id="selectPlace" onchange="loadExample(value)">
           <option value="default" disabled="disabled" selected="selected" style="display:none">Profile of an interesting place</option>
           <option value="1" >Waipio Valley</option>
@@ -98,10 +98,11 @@
           <option value="4">Death Valley</option>
           <option value="5">Grand Canyon</option>
           <option value="6">Uluru</option>
-        </select></span>
-      <span>Address:
+        </select>
+      </label></span>
+      <span><label>Address:
         <input type="text" id="address" size="15" onkeypress="return addressKeyHandler(event)"/>
-      </span>
+      </label></span>
       <span>
         <input type="button" value="Clear points" onclick="reset()"/>
       </span>
