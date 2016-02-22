@@ -5,7 +5,6 @@ describe("topoMap", function() {
 });
 
 describe("The UI functions", function() {
-  //This is bullshit!  I feel like it is more difficult to write the specs than it is to write the code
 	beforeEach(function() {
 		$('<div id="toddler"></div>').appendTo('body');
 	});
@@ -25,7 +24,7 @@ describe("The UI functions", function() {
 		expect(update).toEqual(jasmine.any(Function));
 	});
 	it("...which should return the element it is working on", function(){
-		var elem = document.getElementById('toddler')
+		var elem = document.getElementById('toddler');
 		expect(update(elem, "new text")).toEqual(document.getElementById('toddler'));
 	});
 	xit("...which should add text to elements from the DOM", function() {
